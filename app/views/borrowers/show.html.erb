@@ -1,0 +1,26 @@
+<h1> <%= @borrower.name %></h1>
+
+
+<ul>
+<li>Games on Loan:
+
+</li>
+<br>
+
+<li>Start_date:
+<%= @borrower.start_date%>
+</li>
+
+
+<li>Return date:
+<%= @borrower.end_date %>
+</li>
+<br>
+
+<li>Contact_details:
+<%= @borrower.contact_details %>
+</li>
+<br>
+</ul>
+
+<%= link_to "Edit Borrower", edit_borrower_path(@borrower.id) %>

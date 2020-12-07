@@ -1,0 +1,28 @@
+<h1>User- <%= @user.name %></h1>
+
+
+<ul>
+<li>Borrower Id:
+<%= @user.borrower_id %>
+</li>
+<br>
+
+<li>Contact:
+<%= @user.contact %>
+</li>
+<br>
+
+<li>Admin:
+<% if @user.admin == 1 %>
+</li>
+<br>
+
+<li>Borrower history:
+<%= @user.borrower_history %>
+</li>
+<br>
+</ul>
+
+
+<%= link_to "Edit User", edit_user_path(@user.id) %>
+<%= link_to "Delete User", destroy_user_path(@user.id) %>

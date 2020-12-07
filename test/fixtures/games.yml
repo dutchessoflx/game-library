@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  borrower_id: 1
+  user_id: 1
+  min_players: 1
+  max_players: 1
+  available: false
+  category_id: 1
+  description: MyString
+  contents: MyString
+  missing_damage: MyString
+  box_art: MyText
+
+two:
+  title: MyString
+  borrower_id: 1
+  user_id: 1
+  min_players: 1
+  max_players: 1
+  available: false
+  category_id: 1
+  description: MyString
+  contents: MyString
+  missing_damage: MyString
+  box_art: MyText

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  borrower_id: 1
+  contact: MyString
+  borrower_history: MyString
+  admin: false
+
+two:
+  name: MyString
+  borrower_id: 1
+  contact: MyString
+  borrower_history: MyString
+  admin: false

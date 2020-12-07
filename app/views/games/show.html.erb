@@ -1,0 +1,48 @@
+<h1> <%= @game.title %></h1>
+
+
+<ul>
+<li>Title:
+<%= @game.title %>
+</li>
+<br>
+
+<li>Player(s):
+<%= @game.min_players%> - <%=@game.max_players %>
+</li>
+<br>
+
+<li>Available:
+<% if @game.available == 1 %>
+<%= 'Yes' %>
+<% else %>
+<%= "Not Available" %><br>
+Currently Borrowed by : <%= @game.borrower_id %>
+<% end %>
+</li>
+<br>
+
+<li>Description:
+<%= @game.description %>
+</li>
+<br>
+<li>Categories:
+<%= @game.category_id %>
+</li>
+<br>
+<li>Contents:
+<%= @game.contents %>
+</li>
+<br>
+<li>Is anything missing or damaged?:
+<%= @game.missing_damage %>
+</li>
+<br>
+<li>Box Art:<br>
+<%= image_tag @game.box_art %>
+</li>
+<br>
+</ul>
+
+
+<%= link_to "Edit Game", edit_game_path(@game.id) %>

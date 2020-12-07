@@ -1,0 +1,11 @@
+<h1>Borrowers</h1>
+
+<ul>
+<% @borrowers.each do |b| %>
+<li>
+  <%= link_to b.name, borrower_path(b.id) %>,
+  <%=  b.name.game.title%>
+</li>
+<% end %>
+
+</ul>

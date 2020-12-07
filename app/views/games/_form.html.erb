@@ -1,0 +1,33 @@
+<%= form_with model:@game, local:true, method: 'post' do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :user_id %>
+<%= f.text_field :user_id %>
+<br>
+<%= f.label :min_players %>
+<%= f.text_field :min_players %>
+<br>
+<%= f.label :max_players %>
+<%= f.text_field :max_players%>
+<br>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<br>
+<%= f.label :available %>
+<%= f.text_field :available %>
+<br>
+<%= f.label :category_id %>
+<%= f.text_field :category_id%>
+<br>
+<%= f.label :contents %>
+<%= f.text_field :contents %>
+<br>
+<%= f.label :missing_damage %>
+<%= f.text_field :missing_damage %>
+<br>
+<%= f.label :box_art %>
+<%= f.text_field :box_art %>
+<br>
+<%= f.submit %>
+<% end %>
