@@ -4,9 +4,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    category = Category.new name: params[:name]
-
-
+    @category = Category.create category_params
+    redirect_to categories_path
   end
 
   def index
@@ -15,6 +14,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find params[:id]
+    @game = Game.where(category_id: params[:id]) ##only find first not all
+
   end
 
   def edit
@@ -23,10 +24,16 @@ class CategoriesController < ApplicationController
 
   def update
     category = Category.find params[:id]
-    category.update name: params[:name]
+    category.update category_params
     redirect_to categories_path
   end
 
   def destroy
+    Category.destroy params[:id]
+    redirect_to categories_path
+  end
+
+  def category_params
+    params.require(:category).permit(:name)
   end
 end

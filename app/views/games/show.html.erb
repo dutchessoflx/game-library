@@ -14,10 +14,14 @@
 
 <li>Available:
 <% if @game.available == 1 %>
-<%= 'Yes' %>
+ 'Yes'
 <% else %>
-<%= "Not Available" %><br>
-Currently Borrowed by : <%= @game.borrower_id %>
+Not Available
+<br>
+Currently Borrowed by:
+
+
+
 <% end %>
 </li>
 <br>
@@ -27,7 +31,10 @@ Currently Borrowed by : <%= @game.borrower_id %>
 </li>
 <br>
 <li>Categories:
-<%= @game.category_id %>
+<% @game.categories.pluck(:name).each do |n| %>
+  <li><%= n %></li>
+
+<% end %>
 </li>
 <br>
 <li>Contents:
@@ -39,10 +46,12 @@ Currently Borrowed by : <%= @game.borrower_id %>
 </li>
 <br>
 <li>Box Art:<br>
-<%= image_tag @game.box_art %>
+<%= cl_image_tag @game.box_art %>
 </li>
 <br>
 </ul>
 
 
-<%= link_to "Edit Game", edit_game_path(@game.id) %>
+<%= link_to "Edit Game", edit_game_path(@game.id) %> ||
+<%= link_to "Delete Game", game_path(@game.id), method:'delete' %> ||
+<%= link_to "Borrow This Game", new_loan_path(@game.id) %>

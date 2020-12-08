@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_230041) do
+ActiveRecord::Schema.define(version: 2020_12_07_044033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "borrowers", force: :cascade do |t|
-    t.string "name"
-    t.date "start_date"
-    t.date "end_date"
-    t.string "contact_details"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end ####needs to reference games being borrowed
 
   create_table "categories", force: :cascade do |t|
     t.text "name"
@@ -52,6 +42,16 @@ ActiveRecord::Schema.define(version: 2020_12_06_230041) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "loans", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.integer "borrower_id"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_230041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "email"
   end
 
 end

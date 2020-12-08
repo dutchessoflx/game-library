@@ -1,4 +1,14 @@
-<h1>Categories: <%= @category.name %></h1>
+<h1>Category: <%= @category.name %></h1>
+<ul>
+<% @game.each do |g| %>
+<li>
+<%= g.title %>
+</li>
+<% end %>
+</ul>
 
 
+
+<br>
 <%= link_to "Edit this Category", edit_category_path(@category.id) %>
+<%= link_to "Delete this Category", category_path(@category.id), method: 'delete' %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'session/new'
   root to: "pages#home"
 
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
   resources :users
-  resources :borrowers
+  resources :loans
   resources :games
   resources :categories
 

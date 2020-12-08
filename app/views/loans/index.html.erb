@@ -1,0 +1,53 @@
+<h1>Loans#index</h1>
+
+
+<ul>
+<% @loans.each do |l| %>
+<li>
+<%= link_to l.id, loan_path(l.id) %>
+<%= link_to l.user.name, user_path(l.user) %>
+<%= link_to l.game.title, game_path(l.game.id) %>
+</li>
+<%end %>
+</ul>
+<p>
+Currently Borrowed
+<table>
+  <tr>
+    <th>Game Title</th>
+    <th>Borrowed By</th>
+  </tr>
+<% @loans.each do |l| %>
+<% if Date.today >= l.start_date %>
+<tr>
+  <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+  <td><%= link_to l.user.name, user_path(l.user) %></td>
+</tr>
+<% end %>
+<% end %>
+</table>
+</p>
+<p>
+
+Previously Borrowed
+<table>
+  <tr>
+    <th>Game Title</th>
+    <th>Borrowed By</th>
+  </tr>
+<% @loans.each do |l| %>
+<% if Date.today >= l.end_date %>
+<tr>
+  <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+  <td><%= link_to l.user.name, user_path(l.user) %></td>
+</tr>
+<% end %>
+<% end %>
+
+</table>
+</p>
+
+<br>
+
+<%= link_to "Borrow Some Games", new_loan_path
+ %>

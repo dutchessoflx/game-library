@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   end
 
   def create
-    user= User.find_by email: params[:email]
+    user= User.find_by contact: params[:contact]
 
     if user.present? && user.authenticate(params[:password])
 

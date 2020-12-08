@@ -1,0 +1,18 @@
+<h1>Loans <%= @loan.id %></h1>
+
+
+<label>User:</label>
+<%= @loan.user.name %>
+<br>
+<label>Game:</label>
+<%= @loan.game.title %>
+<br><label>Start Date:</label>
+<%=@loan.start_date %>
+<br><label>End Date:</label>
+<%= @loan.end_date %>
+<br><label>Status:</label>
+<%= @loan.status %>
+<br>
+
+<%= link_to "Edit This Loan", edit_loan_path(@loan.id) %>
+<%= link_to "Delete This Loan", loan_path(@loan.id), method: 'delete' %>
