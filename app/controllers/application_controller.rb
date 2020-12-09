@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+
   before_action :fetch_user
 
   def fetch_user

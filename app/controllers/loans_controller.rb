@@ -5,7 +5,8 @@ class LoansController < ApplicationController
 
   def create
     loan = Loan.create loan_params
-    
+
+
     redirect_to loans_path
   end
 
@@ -19,16 +20,19 @@ class LoansController < ApplicationController
 
   def edit
     @loan = Loan.find params[:id]
+    # redirect_to login_path unless @loan.user_id == @current_user.id
   end
 
   def update
     @loan = Loan.find params[:id]
+    # redirect_to login_path unless @loan.user_id == @current_user.id
     @loan.update loan_params
     redirect_to loan_path(@loan.id)
   end
 
   def destroy
     Loan.destroy params[:id]
+    redirect_to login_path unless @loan.user_id == @current_user.id
     redirect_to loans_path
   end
 

@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome <%= @current_user.name %></h1>
+<div>
+Your Currently Borrowed Games
+<table>
+  <tr>
+    <th>Game Title</th>
+    <th>Borrowed On</th>
+  </tr>
+<% @loans.each do |l| %>
+<% if Date.today >= l.start_date %>
+<tr>
+  <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+  <td><%= link_to l.start_date, user_path(l.user) %></td>
+</tr>
+<% end %>
+<% end %>
+</table>
+</div>
+
+<div>
+<%= link_to "Edit Your User Profile", edit_user_path(@current_user.id)%>
+</div>
+
+<div>
+<%= link_to "Add New Games to the Library", new_game_path %>
+</div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get '/search' => 'pages#search', :as => 'search_page'
   get 'session/new'
   root to: "pages#home"
 

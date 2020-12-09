@@ -1,10 +1,13 @@
 <h1>Category: <%= @category.name %></h1>
 <ul>
-<% @game.each do |g| %>
+  <% @category.games.pluck(:title).each do |n| %>
+    <li><%= link_to n, game_path(@category.games.ids) %></li>
+
+  <% end %>
 <li>
-<%= g.title %>
+
 </li>
-<% end %>
+
 </ul>
 
 

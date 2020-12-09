@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   def create
     # raise 'hell'
     @game = Game.create game_params
+
     @game.categories << Category.find(params[:game][:category_id])
     if params[:game][:box_art].present?
       response = Cloudinary::Uploader.upload params[:game][:box_art]
@@ -14,6 +15,7 @@ class GamesController < ApplicationController
       @game.box_art = response["public_id"]
 
     end
+    @game.user_id = @current_user.id
     @game.save
     redirect_to games_path
 
@@ -33,12 +35,18 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find params[:id]
+    
+    # redirect_to login_path unless @game.user_id == @current_user.id
 
   end
 
   def update
     @game= Game.find params[:id]
-    @game.categories << Category.find(params[:game][:category_id]) unless @game.categories ==params[:game][:category_id]
+    # redirect_to login_path and return unless game.user_id == @current_user.id
+    @game.categories.delete_all
+    if params[:game][:category_id].any?
+      @game.categories << Category.find(params[:game][:category_id])
+    end
     @game.update game_params
 
     # raise 'hell'

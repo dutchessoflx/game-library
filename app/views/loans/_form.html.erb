@@ -1,10 +1,9 @@
 <%= form_with model:@loan, local: true do |f| %>
 
-<%= f.label :user_id %>
-<%= f.collection_select :user_id, User.all, :id, :name, include_blank:  true %>
+<%= @current_user.name %>
 <br>
 <%= f.label :game_id %>
-<%= f.collection_select :game_id, Game.all, :id, :title, include_blank: true %>
+<%= f.collection_select :game_id, Game.all, :id, :title%>
 <br>
 <%= f.label :start_date %>
 <%= f.date_field :start_date %>

@@ -1,42 +1,41 @@
-<h1>Loans#index</h1>
+<h1>Loans</h1>
 
 
-<ul>
-<% @loans.each do |l| %>
-<li>
-<%= link_to l.id, loan_path(l.id) %>
-<%= link_to l.user.name, user_path(l.user) %>
-<%= link_to l.game.title, game_path(l.game.id) %>
-</li>
-<%end %>
-</ul>
-<p>
+
+<div>
+  <p>
 Currently Borrowed
+</p>
 <table>
   <tr>
     <th>Game Title</th>
     <th>Borrowed By</th>
+    <th>Return Date</th>
+
   </tr>
 <% @loans.each do |l| %>
 <% if Date.today >= l.start_date %>
 <tr>
   <td><%= link_to l.game.title, game_path(l.game.id) %></td>
   <td><%= link_to l.user.name, user_path(l.user) %></td>
+  <td><%=  link_to l.end_date, loan_path(l.id)%></td>
+
 </tr>
 <% end %>
 <% end %>
 </table>
-</p>
-<p>
-
+</div>
+<div>
+  <p>
 Previously Borrowed
+</p>
 <table>
   <tr>
     <th>Game Title</th>
     <th>Borrowed By</th>
   </tr>
 <% @loans.each do |l| %>
-<% if Date.today >= l.end_date %>
+<% if Date.today > l.end_date %>
 <tr>
   <td><%= link_to l.game.title, game_path(l.game.id) %></td>
   <td><%= link_to l.user.name, user_path(l.user) %></td>
@@ -45,7 +44,33 @@ Previously Borrowed
 <% end %>
 
 </table>
+</div>
+
+<br>
+<div>
+  <p>
+Next to Be Borrowed
 </p>
+<table>
+  <tr>
+    <th>Game Title</th>
+    <th>Borrowed By</th>
+    <th>Will be Borrowed on</th>
+
+  </tr>
+<% @loans.each do |l| %>
+<% if Date.today < l.start_date %>
+<tr>
+  <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+  <td><%= link_to l.user.name, user_path(l.user) %></td>
+  <td><%=  link_to l.start_date, loan_path(l.id)%></td>
+
+</tr>
+<% end %>
+<% end %>
+
+</table>
+</div>
 
 <br>
 
