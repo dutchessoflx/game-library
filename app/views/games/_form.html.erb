@@ -14,9 +14,6 @@
 <%= f.label :description %>
 <%= f.text_field :description %>
 <br>
-<%= f.label :available %>
-<%= f.text_field :available %>
-<br>
 <%= f.label :category_id %>
 <%= f.collection_check_boxes :category_id, Category.all, :id, :name, include_hidden: false do |box| %>
  <%=box.label {box.check_box(checked: @game.categories.include?(box.object)) + box.text}  %>
