@@ -5,13 +5,14 @@ body{
   color: ;
   margin:  auto;
     text-align: center;
+    border-radius: 10px;
 }
 p{
   text-decoration:  underline;
 }
 
 div{
-  border: 2px solid gray;
+  /* border: 2px solid gray; */
   border-radius: 20px;
   width: 50vw;
 
@@ -19,17 +20,44 @@ div{
   margin: auto;
   margin-top: 10px;
   vertical-align: middle;
+  padding-top: 10px;
 }
+
+div:hover {  box-shadow: 0 5px 15px rgba(0, 0, 0, .2); }
+
+
 div.games-background{
   align: left;
   width: auto;
-   /* background-image: url(https://upload.wikimedia.org/wikipedia/en/7/7e/Mario_Kart_64box.png); */
-   background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
-   background-size: 100% 100%;
+div.login{
+  width: 10vw;
+  padding-bottom: 40px;
+}
 
+div.lib{
+  align: left;
+  width: 10vw;
+  height: 8vh;
+  border: 2px blue;
+  margin: auto;
+}
 
+div.loans{
+  width: 20vw;
+  text-align: center;
+  margin: auto;
 
+}
+
+div.log{
+  border: 2px blue;
+  width: 10vw;
+  height: 8vh;
+  margin: auto;
 }
 
 div.games{
@@ -37,13 +65,23 @@ width: auto;
 border: none;
 }
 
+div.page{
+  width: 100vw;
+}
+
+div.page:hover{
+  box-shadow: none;
+}
+
+
 ul.games{
   margin: auto;
-background-color:rgba(125, 130, 130, 0.9);
+background-color: rgba(180, 180, 214, 0.80);
 border-radius: 10px;
 width: 45vw;
 padding: 50px;
 }
+
 ul{
   list-style: disc;
   align: center;
@@ -52,15 +90,14 @@ ul{
 li{
   text-align: left;
 }
+
 nav{
   display: flex;
   justify-content:  flex-end;
   text-align: center;
 }
-button{
-  /* background-color: rgba(61, 199, 170, 0.12); */
-  border-radius: 10px;
-}
+
+
 a{
   /* background-color: rgba(61, 199, 170, 0.12); */
   border-radius: 10px;
@@ -68,15 +105,12 @@ a{
   color: black;
   margin: 10px;
   padding: 5px;
-  height: 40px;
-  top: 50px;
+  /* height: 40px; */
+  /* top: 50px; */
 
 }
 
-div.log{
-  align: left;
 
-}
 
 a.name{
   padding: 0px;
@@ -85,32 +119,76 @@ a.name{
 
 a.log{
   align: left;
-
+  border: 2px blue;
 }
 
 a.lib{
   align: right;
-  height: 135px;
+
 }
 
 form{
-  text-align: center;
+  text-align: left;
+  width: 30vw;
+  margin: auto;
+  padding: 20px;
+  margin-left: 39vw;
 }
 label{
-  text-align: left;
+  text-align: center;
+  padding: 30px;
 }
+input{
+  /* background-color: grey ; */
+  border-radius: 10px;
+  left: 20px;
+}
+
+#loan_game_id{
+  left: 80px;
+  position: relative;
+  width: 150px;
+}
+#loan_start_date{
+  left: 32px;
+  position: relative;
+}
+#loan_end_date{
+  left: 41px;
+  position: relative;
+}
+input.button{
+  left: 115px;
+  position: relative;
+}
+
+
 table{
 
 margin: auto;
 margin-bottom: 10px;
 text-align: left;
-background-color: rgba(93, 101, 100, 0.80);
-border-radius: 10px
+background-color: rgba(180, 180, 214, 0.80);
+border-radius: 10px;
+padding: 20px;
+}
+
+th{
+  padding:10px;
+  border-radius: 10px;
+}
+
+#title{
+  width: 100vw;
+  margin: 0 ;
+}
+#title:hover{
+  box-shadow: none;
 }
 
 
-div.page{
-  width: 100vw;
-
-
+@media only screen and (max-width: 600px){
+  body{
+  background-color: blue;
+}
 }

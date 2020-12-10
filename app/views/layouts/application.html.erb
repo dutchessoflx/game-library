@@ -10,38 +10,45 @@
   </head>
 
   <body>
+    <div id='title'>
+    <h1>Game Library</h1>
+    <% if @current_user.present? %>
+      Welcome,<%=link_to @current_user.name, root_path, class:'name' %>
+      <%end %>
+  </div>
     <nav>
 
       <% if @current_user.present? %>
-        
-        |<div class='log'>
-        <%= link_to 'Logout', login_path, method:'delete', class: 'log' %> |
-        <%= link_to "Users", users_path, class:'log'%> |
-        <%= link_to "All Currently Borrowed items", loans_path%>|
+
+        <div class='log'>
+        <%= link_to 'Logout', login_path, method:'delete', class: 'log' %>
+        </div>
+        <div class='log'>
+        <%= link_to "Users", users_path, class:'log'%>
+        </div>
+
+
         <% else %>
-        <%= link_to 'Login', login_path, class: 'log' %> ||
-        <%= link_to 'Sign Up', new_user_path, class: 'log' %> |
+        <div class='log'>
+        <%= link_to 'Login', login_path, class: 'log' %>
+        </div>
+        <div class='log'>
+        <%= link_to 'Sign Up', new_user_path, class: 'log' %>
         <% end %>
         </div>
-        <div id='title'>
-        <h1>Game Library</h1>
-        <% if @current_user.present? %>
-          Welcome,<%=link_to @current_user.name, root_path, class:'name' %>
-          <%end %>
+
+      <div class='loans'>
+      <%= link_to "All Currently Borrowed items", loans_path%>
       </div>
         <div class='lib'>
-      <%= link_to "Games", games_path, class: 'lib'%>||
-
+      <%= link_to "Games", games_path, class: 'lib'%>
+      </div>
+      <div class='lib'>
       <%= link_to "Categories", categories_path, class: 'lib'%>
-      <!-- <div class='search'> -->
-            <%= form_tag(search_page_path, :method => "get",
-            class: 'navbar-form navbar-left')%>
-            <!-- <div class="input-group"> -->
+      </div>
 
-              <%= search_field_tag :search, params[:search], placeholder: "Search for Categories", class: "form-control" %>
-            <!-- <div class="input-group-btn"> -->
-              <%= button_tag "Search!", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
-            </div>
+      <!-- <div class='search'> -->
+
           <!-- </div> -->
 
       <!-- </div> -->
@@ -49,7 +56,7 @@
 
 
 
-      <hr>
+
 
 
 

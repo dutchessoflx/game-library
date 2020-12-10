@@ -1,18 +1,16 @@
 <%= form_with model:@loan, local: true do |f| %>
 
-<%= @current_user.name %>
+
 <br>
 <%= f.label :game_id %>
-<%= f.collection_select :game_id, Game.all, :id, :title%>
+<%= f.collection_select :game_id, Game.all, :id, :title, class: 'drop_down'%>
 <br>
 <%= f.label :start_date %>
-<%= f.date_field :start_date %>
+<%= f.date_field :start_date, class: 'date_field'%>
 <br>
 <%= f.label :end_date %>
-<%= f.date_field :end_date %>
+<%= f.date_field :end_date, class: 'date_field'%>
 <br>
-<%= f.label :status %>
-<%= f.text_field :status %>
-<br>
-<%= f.submit %>
+
+<%= f.submit class: 'button' %>
 <% end %>

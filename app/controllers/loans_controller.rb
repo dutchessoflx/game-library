@@ -4,9 +4,10 @@ class LoansController < ApplicationController
   end
 
   def create
-    loan = Loan.create loan_params
-
-
+    loan = Loan.new loan_params
+    loan.user_id = @current_user.id
+    loan.save
+    # raise 'hell'
     redirect_to loans_path
   end
 

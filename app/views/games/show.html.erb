@@ -58,17 +58,16 @@ Currently Borrowed by:
 
 <%= @current_user.name %>
 <br>
-<%= f.hidden_field :game_id, @game.id %>
+
+
 
 <br>
 <%= f.label :start_date %>
-<%= f.date_field :start_date %>
+<%= f.date_field :start_date, class: 'date_field'%>
 <br>
 <%= f.label :end_date %>
-<%= f.date_field :end_date %>
+<%= f.date_field :end_date, class: 'date_field'%>
 <br>
-<%= f.label :status %>
-<%= f.text_field :status %>
-<br>
-<%= f.submit %>
+
+<%= f.submit class: 'button' %>
 <% end %>
