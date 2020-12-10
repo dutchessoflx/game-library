@@ -13,9 +13,9 @@
     <div id='title'>
     <h1>Game Library</h1>
     <% if @current_user.present? %>
-      Welcome,<%=link_to @current_user.name, root_path, class:'name' %>
+      Welcome,<%=link_to @current_user.name, user_path(@current_user.id), class:'name' %>
       <%end %>
-  </div>
+    </div>
     <nav>
 
       <% if @current_user.present? %>
@@ -34,32 +34,18 @@
         </div>
         <div class='log'>
         <%= link_to 'Sign Up', new_user_path, class: 'log' %>
-        <% end %>
+      <% end %>
         </div>
 
       <div class='loans'>
       <%= link_to "All Currently Borrowed items", loans_path%>
       </div>
-        <div class='lib'>
+      <div class='lib' >
       <%= link_to "Games", games_path, class: 'lib'%>
       </div>
       <div class='lib'>
       <%= link_to "Categories", categories_path, class: 'lib'%>
       </div>
-
-      <!-- <div class='search'> -->
-
-          <!-- </div> -->
-
-      <!-- </div> -->
-
-
-
-
-
-
-
-
 
     </nav>
     <div class='page'>

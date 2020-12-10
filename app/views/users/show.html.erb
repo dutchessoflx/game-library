@@ -1,81 +1,89 @@
-<h1>User- <%= @user.name %></h1>
+<h1>Welcome -<%= @user.name %></h1>
 
+<div id='user_info'>
+  <ul>
 
-<ul>
-<li>Borrower Id:
-<%= @user.borrower_id %>
-</li>
-<br>
+    <br>
 
-<li>Contact:
-<%= @user.contact %>
-</li>
-<br>
+    <li>Contact:
+      <%= @user.contact %>
+    </li>
+    <br>
 
-<li>Admin:
-<% if @user.admin == 1 %>
-<%end %>
-</li>
-<br>
-<%= link_to "Edit User", edit_user_path(@user.id) %>
-<%= link_to "Delete User", user_path(@user.id), method: 'delete' %>
-<br>
+    <li>Admin:
+      <% if @user.admin? %>
+      <%= "Yes" %>
+      <% else %>
+      <%= "No" %>
+      <%end %>
+    </li>
+    <br>
+      <%= link_to "Edit User", edit_user_path(@user.id) %>
+      <%= link_to "Delete User", user_path(@user.id), method: 'delete' %>
+    <br>
+  </ul>
+</div>
 
-
-<br>
-</ul>
-Currently Borrowed
-<table>
-  <tr>
-    <th>Game Title</th>
-    <th>Borrowed On</th>
-  </tr>
-<% @loans.each do |l| %>
-<% if Date.today >= l.start_date %>
-<tr>
-  <td><%= link_to l.game.title, game_path(l.game.id) %></td>
-  <td><%= link_to l.start_date, user_path(l.user) %></td>
-</tr>
-<% end %>
-<% end %>
-</table>
-</p>
-</p>
-Next to be Borrowed
-<table>
-  <tr>
-    <th>Game Title</th>
-    <th>Borrowed On</th>
-  </tr>
-<% @loans.each do |l| %>
-<% if Date.today <= l.start_date %>
-<tr>
-  <td><%= link_to l.game.title, game_path(l.game.id) %></td>
-  <td><%= link_to l.start_date, user_path(l.user) %></td>
-</tr>
-<% end %>
-<% end %>
-</table>
-</p>
 <p>
-
-Previously Borrowed
-<table>
-  <tr>
-    <th>Game Title</th>
-    <th>Borrowed on</th>
-    <th>Returned on</th>
-  </tr>
-<% @loans.each do |l| %>
-<% if Date.today >= l.end_date %>
-<tr>
-  <td><%= link_to l.game.title, game_path(l.game.id) %></td>
-  <td><%= link_to l.start_date, user_path(l.user) %></td>
-  <td><%= link_to l.end_date, user_path(l.user) %></td>
-
-</tr>
-<% end %>
-<% end %>
-
-</table>
+  Currently Borrowed
+    <table>
+      <tr>
+        <th>Game Title</th>
+        <th>Borrowed On</th>
+      </tr>
+      <% @loans.each do |l| %>
+      <% if Date.today >= l.start_date %>
+      <tr>
+        <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+        <td><%= link_to l.start_date, user_path(l.user) %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
 </p>
+
+<p>
+  Next to be Borrowed
+    <table>
+      <tr>
+        <th>Game Title</th>
+        <th>Borrowed On</th>
+      </tr>
+      <% @loans.each do |l| %>
+      <% if Date.today <= l.start_date %>
+      <tr>
+        <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+        <td><%= link_to l.start_date, user_path(l.user) %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+</p>
+
+<p>
+  Previously Borrowed
+    <table>
+      <tr>
+        <th>Game Title</th>
+        <th>Borrowed on</th>
+        <th>Returned on</th>
+      </tr>
+      <% @loans.each do |l| %>
+      <% if Date.today >= l.end_date %>
+      <tr>
+        <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+        <td><%= link_to l.start_date, user_path(l.user) %></td>
+        <td><%= link_to l.end_date, user_path(l.user) %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </table>
+</p>
+
+<div>
+  <%= link_to "Edit Your User Profile", edit_user_path(@current_user.id)%>
+</div>
+
+<div>
+  <%= link_to "Add New Games to the Library", new_game_path %>
+</div>

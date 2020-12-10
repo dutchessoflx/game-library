@@ -1,5 +1,32 @@
 <h1><%= @current_user.name %>-Loan something out!</h1>
 
-if @game.available?
-true then render form if false "sorry this game in currently on loan "
+<% if flash[:error] %>
+<br>
+<strong><%= flash[:error] %></strong><br>
+<div>
+  <p>
+    Currently Borrowed
+  </p>
+<table>
+  <tr>
+    <th>Game Title</th>
+    <th>Borrowed By</th>
+    <th>Return Date</th>
+
+  </tr>
+      <% @loans.each do |l| %>
+      <% if Date.today >= l.start_date %>
+  <tr>
+    <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+    <td><%= link_to l.user.name, user_path(l.user) %></td>
+    <td><%=  link_to l.end_date, loan_path(l.id)%></td>
+
+  </tr>
+      <% end %>
+      <% end %>
+  </table>
+<%= link_to "Borrow Another Game", new_loan_path %>
+<% else %>
 <%=render partial: 'form' %>
+<% end %>
+<br>

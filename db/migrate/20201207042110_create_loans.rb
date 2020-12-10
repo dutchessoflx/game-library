@@ -5,7 +5,7 @@ class CreateLoans < ActiveRecord::Migration[5.2]
       t.integer :game_id
       t.date :start_date
       t.date :end_date
-      t.integer :status
+      
 
       t.timestamps
     end

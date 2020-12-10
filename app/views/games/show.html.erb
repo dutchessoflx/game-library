@@ -3,60 +3,63 @@
 <div class='games-background'  style='background-image: url(<%= Cloudinary::Utils.cloudinary_url(@game.box_art, width: 50, height: 100, crop: :fill) %>)'>
 
   <div class='games'>
-  <ul class='games'>
+    <ul class='games'>
 
 
-<li>Player(s):
-<%= @game.min_players%> - <%=@game.max_players %>
-</li>
-<br>
+      <li>Player(s):
+        <%= @game.min_players%> - <%=@game.max_players %>
+      </li>
+      <br>
 
-<li>Available:
-<% if @game.available? %>
- Yes
-<% else %>
-Not Available
-<br>
-Currently Borrowed by:
-<%= @loan.user.name %>
+      <li>Available:
+        <% if @game.available? %>
+         Yes
+        <% else %>
+        Not Available
+        <br>
+        Currently Borrowed by:
+        <%= @loan.user.name %>
+        <% end %>
+      </li>
+      <br>
+
+      <li>Description:
+        <%= @game.description %>
+      </li>
+      <br>
+      <li>Categories:
+        <% @game.categories.pluck(:name).each do |n| %>
+          <li><%= n %></li>
+
+        <% end %>
+      </li>
+      <br>
+      <li>Contents:
+        <%= @game.contents %>
+      </li>
+      <br>
+      <li>Is anything missing or damaged?:
+        <%= @game.missing_damage %>
+      </li>
+      <br>
 
 
-
-<% end %>
-</li>
-<br>
-
-<li>Description:
-<%= @game.description %>
-</li>
-<br>
-<li>Categories:
-<% @game.categories.pluck(:name).each do |n| %>
-  <li><%= n %></li>
-
-<% end %>
-</li>
-<br>
-<li>Contents:
-<%= @game.contents %>
-</li>
-<br>
-<li>Is anything missing or damaged?:
-<%= @game.missing_damage %>
-</li>
-<br>
-
-<br>
-</ul>
-</div>
+    </ul>
+  </div>
 </div>
 <%= link_to "Edit Game", edit_game_path(@game.id) %> ||
+<% if :check_for_admin == true%>
 <%= link_to "Delete Game", game_path(@game.id), method:'delete' %> ||
-<%= link_to "Borrow This Game", new_loan_path(@game.id) %>
+<% end %>
+
+
 
 <%= form_with model: Loan.new, local: true do |f| %>
-
+<% if session[:user_id].present?%>
 <%= @current_user.name %>
+<%else %>
+<%= link_to "Login in to Borrow this game", login_path %>
+<%end %>
 <br>
 
 

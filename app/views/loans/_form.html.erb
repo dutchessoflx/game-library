@@ -3,7 +3,7 @@
 
 <br>
 <%= f.label :game_id %>
-<%= f.collection_select :game_id, Game.all, :id, :title, class: 'drop_down'%>
+<%= f.collection_select :game_id, Game.all, :id, :title, include_blank: true, class: 'drop_down'%>
 <br>
 <%= f.label :start_date %>
 <%= f.date_field :start_date, class: 'date_field'%>

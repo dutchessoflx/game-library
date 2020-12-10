@@ -1,4 +1,4 @@
-<h1>Loans <%= @loan.id %></h1>
+<h1>Loan #<%= @loan.id %></h1>
 
 
 <label>User:</label>
@@ -10,6 +10,12 @@
 <%=@loan.start_date %>
 <br><label>End Date:</label>
 <%= @loan.end_date %>
+<br>
+<% if @current_user == @loan.user || @current_user.admin? %>
+  <%= link_to "Edit This Loan", edit_loan_path(@loan.id) %>
+  <% end %>
+  <% if :check_for_admin? %>
+  <%= link_to "Delete This Loan", loan_path(@loan.id), method: 'delete' %>
+  <% else %>
 
-<%= link_to "Edit This Loan", edit_loan_path(@loan.id) %>
-<%= link_to "Delete This Loan", loan_path(@loan.id), method: 'delete' %>
+<% end %>

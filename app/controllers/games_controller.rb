@@ -1,11 +1,11 @@
 class GamesController < ApplicationController
+  before_action :check_for_admin, :only => [:edit, :update, :destroy]
 
   def new
     @game = Game.new
   end
 
   def create
-    # raise 'hell'
     @game = Game.create game_params
 
     @game.categories << Category.find(params[:game][:category_id])
@@ -24,40 +24,33 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
-    # available?
   end
 
   def show
     @game = Game.find params[:id]
-    @loan = Loan.find_by(game_id: params[:id])
+    @loan = @game.loans.find_by("TIMESTAMP 'now' >= start_date AND TIMESTAMP 'now' <= end_date")
     @categories = Category.where(game_id: params[:id])
-    # available?
-    # raise 'hell'
-
   end
 
   def edit
     @game = Game.find params[:id]
-
-    # redirect_to login_path unless @game.user_id == @current_user.id
-
+    flash[:error] = "Only The Owner of that game can edit it" unless @game.user_id == @current_user.id || @current_user.admin?
   end
 
   def update
     @game= Game.find params[:id]
-    # redirect_to login_path and return unless game.user_id == @current_user.id
+    flash[:error] = "Only The Owner of that game can edit it" and return unless @game.user_id == @current_user.id || @current_user.admin?
     @game.categories.delete_all
     if params[:game][:category_id].any?
       @game.categories << Category.find(params[:game][:category_id])
     end
     @game.update game_params
-
-    # raise 'hell'
     redirect_to game_path(@game.id)
   end
 
   def destroy
     Game.destroy params[:id]
+    flash[:error] = "Only The Owner of that game can edit it" unless @game.user_id == @current_user.id || @current_user.admin?
     redirect_to games_path
   end
 

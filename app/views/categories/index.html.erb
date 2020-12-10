@@ -1,16 +1,15 @@
 <h1>Categories</h1>
-<ul>
-<% @categories.each do |c| %>
-<li>
-  <%= link_to c.name, category_path(c.id)%>
-</li>
-<% end %>
+<ul class='categories'>
+  <% @categories.each do |c| %>
+  <li>
+    <%= link_to c.name, category_path(c.id)%>
+  </li>
+  <% end %>
 
 </ul>
 
 <% if @current_user.present? %>
-  
-  <%= link_to "Add a Category ", new_category_path %>
-  <% else %>
+<%= link_to "Add a Category ", new_category_path %>
+<% else %>
 
-  <% end %>
+<% end %>

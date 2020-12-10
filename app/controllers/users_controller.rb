@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
   end
 
   def show
@@ -26,16 +25,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
+    :check_for_admin
   end
 
   def update
     user = User.find params[:id]
+    :check_for_admin
     user.update user_params
     redirect_to user_path(user.id)
   end
 
   def destroy
     User.destroy params[:id]
+    :check_for_admin
     redirect_to users_path
   end
 

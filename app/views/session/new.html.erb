@@ -1,19 +1,20 @@
 <h1>Login</h1>
-<div class='login'>
-<% if flash[:error] %>
-<br>
-<strong><%= flash[:error] %></strong>
-<% end %>
-<br>
-<br>
 
-<%= form_with url: login_path, local:true do |f| %>
-<%= f.label :contact, "Email" %>
-<%= f.text_field :contact %>
-<br>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<br>
-<%= f.submit "Login" %>
-<% end %>
+<div class='login'>
+  <% if flash[:error] %>
+  <br>
+  <strong><%= flash[:error] %></strong>
+  <% end %>
+  <br>
+  <br>
+
+  <%= form_with url: login_path, local:true do |f| %>
+  <%= f.label :contact, "Email" %>
+  <%= f.text_field :contact, id: 'login_email'%>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password, id: 'login_password' %>
+  <br>
+  <%= f.submit "Login", id: 'login_button'%>
+  <% end %>
 </div>

@@ -1,17 +1,18 @@
 <h1>Category: <%= @category.name %></h1>
+
 <ul>
   <% @category.games.pluck(:title).each do |n| %>
     <li><%= link_to n, game_path(@category.games.ids) %></li>
 
   <% end %>
-<li>
 
-</li>
 
 </ul>
 
 
 
 <br>
+<% if :check_for_admin == true%>
 <%= link_to "Edit this Category", edit_category_path(@category.id) %>
 <%= link_to "Delete this Category", category_path(@category.id), method: 'delete' %>
+<% end %>

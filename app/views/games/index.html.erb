@@ -6,12 +6,13 @@
   </tr>
 
 
-<% @games.each do |g| %>
-<tr>
-  <td> <%= link_to g.title, game_path(g.id) %></td>
-  <%= g.available %>
-  
-  <% end %>
+      <% @games.each do |g| %>
+  <tr>
+    <td> <%= link_to g.title, game_path(g.id) %></td>
+
+    <td><%= g.available? ? 'Available' : 'Not Available'%></td>
+
+      <% end %>
 
 </table>
 <br>

@@ -1,13 +1,21 @@
 <h1>Users</h1>
+<% if :check_for_admin  %>
+    <ul>
+    <% @users.each do |u| %>
+    <li>
+      <%= link_to u.name, user_path(u.id) %>
+    </li>
+    <% end %>
+    </ul>
 
-<ul>
-<% @users.each do |u| %>
-<li>
-  <%= link_to u.name, user_path(u.id) %>
-</li>
+      <%= link_to "Add new User", new_user_path %>
+
+<% else %>
+      <ul>
+      <% @users.each do |u| %>
+      <li>
+        <%= u.name %>
+      </li>
+      <% end %>
+      </ul>
 <% end %>
-
-
-</ul>
-
-<%= link_to "Add new User", new_user_path %>

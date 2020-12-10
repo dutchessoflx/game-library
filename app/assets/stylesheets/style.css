@@ -6,6 +6,7 @@ body{
   text-align: center;
   border-radius: 10px;
 }
+
 p{
   text-decoration:  underline;
 }
@@ -32,14 +33,13 @@ div.games-background{
 }
 
 div.login{
-  width: 10vw;
+  /* width: 10vw; */
   padding-bottom: 40px;
 }
 
 div.lib{
   align: left;
-  width: 10vw;
-  height: 8vh;
+  width: 15vw;
   border: 2px blue;
   margin: auto;
 }
@@ -47,15 +47,12 @@ div.lib{
 div.loans{
   width: 20vw;
   text-align: center;
-  margin: auto;
-
 }
 
 div.log{
   border: 2px blue;
   width: 10vw;
-  height: 8vh;
-  margin: auto;
+  padding: 10px;
 }
 
 div.games{
@@ -71,20 +68,27 @@ div.page:hover{
   box-shadow: none;
 }
 
+#user_info{
+  display: none;
+}
 
 ul.games{
-  margin: auto;
+margin: auto;
 background-color: rgba(180, 180, 214, 0.80);
 border-radius: 10px;
 width: 45vw;
 padding: 50px;
 }
 
-ul{
+ul.categories{
   list-style: disc;
   align: center;
-  margin-left: 40vw;
+
 }
+ul{
+  margin-left: 400px;
+}
+
 li{
   text-align: left;
 }
@@ -105,10 +109,7 @@ a{
   padding: 5px;
   /* height: 40px; */
   /* top: 50px; */
-
 }
-
-
 
 a.name{
   padding: 0px;
@@ -122,24 +123,38 @@ a.log{
 
 a.lib{
   align: right;
-
 }
 
 form{
-  text-align: left;
-  width: 30vw;
-  margin: auto;
+  /* text-align: left; */
+  /* width: 30vw; */
+  /* margin: auto; */
   padding: 20px;
-  margin-left: 39vw;
+  /* margin-left: 39vw; */
 }
+
 label{
   text-align: center;
   padding: 30px;
 }
+
 input{
   /* background-color: grey ; */
   border-radius: 10px;
   left: 20px;
+}
+
+#login_email{
+  margin-left: 83px;
+}
+
+#login_password{
+  margin-left: 45px;
+}
+
+#login_button{
+  margin-left: 200px;
+  width: 150px;
 }
 
 #loan_game_id{
@@ -147,22 +162,31 @@ input{
   position: relative;
   width: 150px;
 }
+
 #loan_start_date{
   left: 32px;
   position: relative;
 }
+
 #loan_end_date{
   left: 41px;
   position: relative;
 }
+
 input.button{
   left: 115px;
   position: relative;
 }
 
+.add-game{
+  text-align: center;
+  }
+
+.category-table{
+  display: block;
+}
 
 table{
-
 margin: auto;
 margin-bottom: 10px;
 text-align: left;
@@ -204,29 +228,31 @@ div.game-background{
 form{
   margin: 0;
 }
+
 #loan_game_id{
   left:auto;
   margin: 0;
   padding: 0;
 }
+
 #loan_start_date{
   left:auto;
   margin: 0;
   padding: 0;
-
 }
+
 #loan_end_date{
   left:auto;
 margin: 0;
 padding: 0;
-
 }
+
 input.button{
   margin: 0;
   padding: 0;
   left: auto;
-
 }
+
 label{
   margin: 0;
   padding: 0;

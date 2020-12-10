@@ -28,11 +28,9 @@ ActiveRecord::Schema.define(version: 2020_12_07_044033) do
 
   create_table "games", force: :cascade do |t|
     t.string "title"
-    t.integer "borrower_id"
     t.integer "user_id"
     t.integer "min_players"
     t.integer "max_players"
-    t.boolean "available"
     t.integer "category_id"
     t.string "description"
     t.string "contents"
@@ -47,16 +45,13 @@ ActiveRecord::Schema.define(version: 2020_12_07_044033) do
     t.integer "game_id"
     t.date "start_date"
     t.date "end_date"
-    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.integer "borrower_id"
     t.string "contact"
-    t.string "borrower_history"
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
