@@ -11,12 +11,11 @@
     <th>Game Title</th>
     <th>Borrowed By</th>
     <th>Return Date</th>
-
   </tr>
       <% @loans.each do |l| %>
-      <% if Date.today >= l.start_date %>
+      <% if Date.today >= l.start_date  and Date.today <= l.end_date%>
   <tr>
-    <td><%= link_to l.game.title, game_path(l.game.id) %></td>
+    <td> <%= link_to l.game.title, game_path(l.game.id) %></td>
     <td><%= link_to l.user.name, user_path(l.user) %></td>
     <td><%=  link_to l.end_date, loan_path(l.id)%></td>
 

@@ -5,7 +5,7 @@ class LoansController < ApplicationController
   end
 
   def create
-    loan = Loan.new loan_params
+    loan = Loan.create loan_params
     loan.user_id = @current_user.id
     if loan.game.available? == false
       redirect_to new_loan_path
@@ -37,14 +37,20 @@ class LoansController < ApplicationController
   end
 
   def destroy
-    @loan = Loan.destroy params[:id]
-    redirect_to login_path unless @loan.user_id == @current_user.id
+
+    if @loan.user.id == @current_user.id
+      @loan = Loan.destroy params[:id]
     redirect_to loans_path
+    else
+      flash[:error] = "You must be the user to delete a loan"
+    redirect_to login_path
+    end
+
   end
 
   private
   def loan_params
-    params.require(:loan).permit(:user_id, :game_id, :start_date, :end_date, :status)
+    params.require(:loan).permit(:user_id, :game_id, :start_date, :end_date)
   end
 
 end

@@ -5,7 +5,7 @@
 <%= @loan.user.name %>
 <br>
 <label>Game:</label>
-<%= @loan.game.title %>
+<%= @loan.game.title  %>
 <br><label>Start Date:</label>
 <%=@loan.start_date %>
 <br><label>End Date:</label>
@@ -13,9 +13,8 @@
 <br>
 <% if @current_user == @loan.user || @current_user.admin? %>
   <%= link_to "Edit This Loan", edit_loan_path(@loan.id) %>
+  
   <% end %>
-  <% if :check_for_admin? %>
-  <%= link_to "Delete This Loan", loan_path(@loan.id), method: 'delete' %>
-  <% else %>
-
-<% end %>
+  <% if @current_user.admin? %>
+        <%= link_to "Delete This Loan", loan_path(@loan.id), method: 'delete' %>
+    <% end %>
