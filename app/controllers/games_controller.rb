@@ -31,14 +31,14 @@ class GamesController < ApplicationController
     @game = Game.find params[:id]
     @loan = Loan.find_by(game_id: params[:id])
     @categories = Category.where(game_id: params[:id])
-    available?
+    # available?
     # raise 'hell'
 
   end
 
   def edit
     @game = Game.find params[:id]
-      # @game.available?
+
     # redirect_to login_path unless @game.user_id == @current_user.id
 
   end

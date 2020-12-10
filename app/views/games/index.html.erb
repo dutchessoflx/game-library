@@ -9,14 +9,9 @@
 <% @games.each do |g| %>
 <tr>
   <td> <%= link_to g.title, game_path(g.id) %></td>
-
-<td> <% if  g.available %>
-<%= 'Available' %>
-<% else %>
-<%= 'Unavailable' %>
-<% end %></td>
-</tr>
-<% end %>
+  <%= g.available %>
+  
+  <% end %>
 
 </table>
 <br>

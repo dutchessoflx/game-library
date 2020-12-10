@@ -122,7 +122,7 @@ g4= Game.create!(
   min_players: 1,
   max_players: 1,
   available: 0,
-  
+
   description: "Lara Croft solves puzzles and fights bad guys to survive, HINT: Dont get in Helicopters ever!",
   contents: "Digital copy for Xbox",
   missing_damage: 'n/a',
